@@ -1,0 +1,7 @@
+{"ts":1374203180112,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
+{"contributors":[],"silentsave":false,"ts":1374203322645,"patch":[[{"diffs":[[1,"Template.event.events({\n    \n    \n    });"]],"start1":0,"start2":0,"length1":0,"length2":41}]],"length":41,"saved":false}
+{"ts":1374203348511,"patch":[[{"diffs":[[0,"s({\n    "],[-1,"\n    "],[1,"'click input' : function () {\n      // template data, if any, is available in 'this'\n      if (typeof console !== 'undefined')\n        console.log(\"You pressed the button\");\n    }"],[0,"\n    });"]],"start1":20,"start2":20,"length1":21,"length2":195}]],"length":215,"saved":false}
+{"ts":1374203426595,"patch":[[{"diffs":[[0,"\n    });"],[1,"\n    \nTemplate.event.event_name = "]],"start1":207,"start2":207,"length1":8,"length2":42}]],"length":249,"saved":false}
+{"ts":1374203805659,"patch":[[{"diffs":[[0,"_name = "],[1,"\"bob\";"]],"start1":241,"start2":241,"length1":8,"length2":14}]],"length":255,"saved":false}
+{"ts":1374204092999,"patch":[[{"diffs":[[0,"me ="],[1," function () {\n    \n    return"],[0," \"bob\";"],[1,"\n};"]],"start1":244,"start2":244,"length1":11,"length2":44}]],"length":288,"saved":false}
+{"ts":1374204320946,"patch":[[{"diffs":[[0,"mplate.event"],[1,"List"],[0,".events({\n  "]],"start1":2,"start2":2,"length1":24,"length2":28},{"diffs":[[0,"te.event"],[1,"List"],[0,".event_n"]],"start1":231,"start2":231,"length1":16,"length2":20}]],"length":296,"saved":false}

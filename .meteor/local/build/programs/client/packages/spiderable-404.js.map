@@ -1,0 +1,2 @@
+)]}'
+{"version":3,"file":"/packages/spiderable-404.js","sources":["spiderable-404/client.js"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA,c;AACA,oE;AACA,gE;AACA,wB;AACA,mB;AACA,E","sourcesContent":["Spiderable = {\n    // This can be overwritten by client code to return a different \n    // HTTP status code and headers from the spiderable package.\n    httpStatusCode: 200,\n    httpHeaders: {}\n};\n\n"]}

@@ -1,0 +1,7 @@
+<template name="dashboardIndex">
+<h1>Index Page</h1>
+
+{{#each collectionList}}<a href="/dashboard/{{name}}">{{name}}</a>{{/each}}
+
+<button>Create collection</button>
+</template>

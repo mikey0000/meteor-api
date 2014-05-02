@@ -1,0 +1,4 @@
+{"ts":1374209920875,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
+{"contributors":[],"silentsave":false,"ts":1374209922269,"patch":[[{"diffs":[[1,"Meteor.Router.add({\n    '/': 'home',\n    '/events': 'viewEvents',\n  });\n\nMeteor.Router.add('*', 'not_found');\n\n  Meteor.Router.filters({\n    requireLogin: function(page) {\n      \n      if (Meteor.user()) {\n        return page;\n      } else {\n        return 'viewEvents';\n      }\n    }\n  });\n\n  Meteor.Router.filter('requireLogin', {only: 'admin'});\n  "]],"start1":0,"start2":0,"length1":0,"length2":351}]],"length":351,"saved":false}
+{"ts":1374209925830,"patch":[[{"diffs":[[0,"  }\n  });\n\n "],[1,"#"],[0," Meteor.Rout"]],"start1":281,"start2":281,"length1":24,"length2":25}]],"length":352,"saved":false}
+{"ts":1374209928062,"patch":[[{"diffs":[[0,";\n\n "],[-1,"#"],[1,"//"],[0," Met"]],"start1":289,"start2":289,"length1":9,"length2":10}]],"length":353,"saved":false}
