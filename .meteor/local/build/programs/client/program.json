@@ -471,13 +471,22 @@
       "hash": "44f7b57eed9cc797b384f900d9cc4a45f414ab96"
     },
     {
+      "path": "app/client/views/dashboard/template.collections_edit.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/client/views/dashboard/template.collections_edit.js?87d3b9312a3b3f663c1a7d5236c3e8ff6d11c771",
+      "size": 131,
+      "hash": "87d3b9312a3b3f663c1a7d5236c3e8ff6d11c771"
+    },
+    {
       "path": "app/client/views/dashboard/template.collections_index.js",
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/client/views/dashboard/template.collections_index.js?29b2bf11e670a7f33b7d7d5255893a1c40619c93",
-      "size": 565,
-      "hash": "29b2bf11e670a7f33b7d7d5255893a1c40619c93"
+      "url": "/client/views/dashboard/template.collections_index.js?471ad88ee12daee64638ccbec20222eba6577e60",
+      "size": 1208,
+      "hash": "471ad88ee12daee64638ccbec20222eba6577e60"
     },
     {
       "path": "app/client/views/dashboard/template.collections_show.js",
@@ -489,31 +498,13 @@
       "hash": "664284a37af09945565aa4efffa8d38d58f23672"
     },
     {
-      "path": "app/client/views/eventUI/template.event_item.js",
+      "path": "app/client/views/dynamic_template_loader/template.dynamic_template.js",
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/client/views/eventUI/template.event_item.js?26ba262c8e07dead58c83ee4f468bd564ff27c10",
-      "size": 1122,
-      "hash": "26ba262c8e07dead58c83ee4f468bd564ff27c10"
-    },
-    {
-      "path": "app/client/views/template.404.js",
-      "where": "client",
-      "type": "js",
-      "cacheable": true,
-      "url": "/client/views/template.404.js?9973b4f978649f23f3e9fe020602e8cb7fe3109e",
-      "size": 161,
-      "hash": "9973b4f978649f23f3e9fe020602e8cb7fe3109e"
-    },
-    {
-      "path": "app/client/views/template.footer.js",
-      "where": "client",
-      "type": "js",
-      "cacheable": true,
-      "url": "/client/views/template.footer.js?6d2ecd068c294bf43014787b646d146ee1826197",
-      "size": 1020,
-      "hash": "6d2ecd068c294bf43014787b646d146ee1826197"
+      "url": "/client/views/dynamic_template_loader/template.dynamic_template.js?272f47cdeef1a2d98c98fcbd3ba145b1de25a84c",
+      "size": 389,
+      "hash": "272f47cdeef1a2d98c98fcbd3ba145b1de25a84c"
     },
     {
       "path": "app/client/views/template.layout.js",
@@ -525,15 +516,6 @@
       "hash": "8f70356d6b6328664d7042bcd3f0fc8c6c5ce57c"
     },
     {
-      "path": "app/client/views/template.view_events.js",
-      "where": "client",
-      "type": "js",
-      "cacheable": true,
-      "url": "/client/views/template.view_events.js?24bc28c8c7f3939f3825f607c886ccdbca2d5c6a",
-      "size": 4188,
-      "hash": "24bc28c8c7f3939f3825f607c886ccdbca2d5c6a"
-    },
-    {
       "path": "app/client/template.home.js",
       "where": "client",
       "type": "js",
@@ -543,13 +525,22 @@
       "hash": "4941cfdaee3a933b88da4dfad59121b17d43956b"
     },
     {
+      "path": "app/lib/helpers.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/lib/helpers.js?e760fd91a8cb24bcaedc904c2ef9b1fcb2ba02fc",
+      "size": 917,
+      "hash": "e760fd91a8cb24bcaedc904c2ef9b1fcb2ba02fc"
+    },
+    {
       "path": "app/lib/router.js",
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/lib/router.js?adb89e74728958f8f288ed74cae478dc77068b3d",
-      "size": 2834,
-      "hash": "adb89e74728958f8f288ed74cae478dc77068b3d"
+      "url": "/lib/router.js?3a9e2c71dbd1c9e7e9952c9166ee80c5efa72e30",
+      "size": 3315,
+      "hash": "3a9e2c71dbd1c9e7e9952c9166ee80c5efa72e30"
     },
     {
       "path": "app/client/views/dashboard/collections_create.js",
@@ -561,22 +552,31 @@
       "hash": "c64f0583cbe16ce3cce9fb71a44623e74b7ec396"
     },
     {
+      "path": "app/client/views/dashboard/collections_edit.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/client/views/dashboard/collections_edit.js?2a3453bba5b8f7e5a39caf4f0fb6016f1b588104",
+      "size": 19,
+      "hash": "2a3453bba5b8f7e5a39caf4f0fb6016f1b588104"
+    },
+    {
       "path": "app/client/views/dashboard/collections_show.js",
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/client/views/dashboard/collections_show.js?af9daeef90fc2246e8a00180676e1ef6a3ae4833",
-      "size": 206,
-      "hash": "af9daeef90fc2246e8a00180676e1ef6a3ae4833"
+      "url": "/client/views/dashboard/collections_show.js?ab0e78b632f99f7f4a3d0c747113f648503c6174",
+      "size": 212,
+      "hash": "ab0e78b632f99f7f4a3d0c747113f648503c6174"
     },
     {
-      "path": "app/client/views/eventUI/event_item.js",
+      "path": "app/client/views/dynamic_template_loader/dynamic_template.js",
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/client/views/eventUI/event_item.js?dbe7367e925e1e0ac77b5acc12e002f193388d1c",
-      "size": 460,
-      "hash": "dbe7367e925e1e0ac77b5acc12e002f193388d1c"
+      "url": "/client/views/dynamic_template_loader/dynamic_template.js?0e116ef8232744b561156fd2daa1eb80186d5a3d",
+      "size": 123,
+      "hash": "0e116ef8232744b561156fd2daa1eb80186d5a3d"
     },
     {
       "path": "app/client/views/view_events.js",
@@ -586,15 +586,6 @@
       "url": "/client/views/view_events.js?a38c05813068085035f7d2df01d159149703aa4e",
       "size": 247,
       "hash": "a38c05813068085035f7d2df01d159149703aa4e"
-    },
-    {
-      "path": "app/client/home.js",
-      "where": "client",
-      "type": "js",
-      "cacheable": true,
-      "url": "/client/home.js?94608b886b325596cfdc66e3d59e89df8c126026",
-      "size": 1015,
-      "hash": "94608b886b325596cfdc66e3d59e89df8c126026"
     },
     {
       "path": "app/collections/api.js",
@@ -610,9 +601,9 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/collections/settings.js?295458e6610c5f3bfe3e61f7b85f579b22898b20",
-      "size": 65,
-      "hash": "295458e6610c5f3bfe3e61f7b85f579b22898b20"
+      "url": "/collections/settings.js?2a3453bba5b8f7e5a39caf4f0fb6016f1b588104",
+      "size": 19,
+      "hash": "2a3453bba5b8f7e5a39caf4f0fb6016f1b588104"
     },
     {
       "path": "app/deployd.js",

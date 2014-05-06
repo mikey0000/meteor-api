@@ -252,6 +252,9 @@
       "path": "packages/global-imports.js"
     },
     {
+      "path": "app/lib/helpers.js"
+    },
+    {
       "path": "app/lib/router.js"
     },
     {

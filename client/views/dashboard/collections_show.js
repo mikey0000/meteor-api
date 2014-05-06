@@ -3,7 +3,7 @@ Template.dashboardShow.helpers({
         return {
             rowsPerPage: 10,
             showFilter: true,
-            fields: ['type']
+            fields: ['_id','type']
         };
     }
 });

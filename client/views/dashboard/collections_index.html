@@ -1,7 +1,16 @@
 <template name="dashboardIndex">
 <h1>Index Page</h1>
-
-{{#each collectionList}}<a href="/dashboard/{{name}}">{{name}}</a>{{/each}}
-
-<button>Create collection</button>
+<div>
+	<ul>
+{{#each collectionList}}
+<li><a href="/dashboard/{{name}}">{{name}}</a>
+<ul>
+	<li><a href="/{{name}}/properties">properties</a></li>
+	<li><a href="/{{name}}/api">api</a></li>
+</ul>
+</li>{{/each}}
+</ul>
+</div>
+<button><a href="/create">Create collection</a></button>
+{{> dynamicTemplate name="dashboardCreate"}}
 </template>
