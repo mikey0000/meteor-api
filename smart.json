@@ -4,6 +4,7 @@
       "git": "git://github.com/arunoda/meteor-fast-render.git"
     },
     "iron-router": {},
-    "reactive-table": {}
+    "reactive-table": {},
+    "foundation": {}
   }
 }

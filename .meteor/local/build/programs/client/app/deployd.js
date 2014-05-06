@@ -36,7 +36,7 @@ if (Meteor.isServer) {
   Meteor.methods({
     'create_server_col' : function(collectionname) {
        if(!Settings.findOne({type:'collection', name: collectionname})) {
-        var result = Settings.insert({type:'collection', name: collectionname});
+        var result = Settings.insert({type:'collection', name: collectionname, properties: ['_id']});
 
         this[collectionname] = new Meteor.Collection(collectionname);
         collections[collectionname] = this[collectionname];

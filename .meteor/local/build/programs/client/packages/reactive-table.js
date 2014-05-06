@@ -408,6 +408,15 @@ i18n.map('ua', {                                                                
     }                                                                                                              // 88
 });                                                                                                                // 89
                                                                                                                    // 90
+i18n.map('tr', {                                                                                                   // 91
+    reactiveTable: {                                                                                               // 92
+        filter: 'Filtrele',                                                                                        // 93
+        show: 'Göster',                                                                                            // 94
+        rowsPerPage: 'sayfa başı',                                                                                 // 95
+        page: 'Sayfa',                                                                                             // 96
+        of: ' / '                                                                                                  // 97
+    }                                                                                                              // 98
+});                                                                                                                // 99
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }).call(this);
@@ -489,7 +498,7 @@ var generateSettings =  function () {                                           
     if (_.keys(fields).length < 1 ||                                                                               // 62
         (_.keys(fields).length === 1 &&                                                                            // 63
          _.keys(fields)[0] === 'hash')) {                                                                          // 64
-        fields = _.without(_.keys(collection.findOne()), '_id');                                                   // 65
+        fields = _.without(_.keys(collection.findOne() || {}), '_id');                                             // 65
     }                                                                                                              // 66
                                                                                                                    // 67
     var normalizeField = function (field) {                                                                        // 68
@@ -626,7 +635,7 @@ Template.reactiveTable.helpers({                                                
     'sortedRows': function () {                                                                                    // 199
         var sortDirection = Session.get(getSessionSortDirectionKey(this.group));                                   // 200
         var sortKeyIndex = Session.get(getSessionSortKey(this.group));                                             // 201
-        var sortKeyField = this.fields[sortKeyIndex];                                                              // 202
+        var sortKeyField = this.fields[sortKeyIndex] || {};                                                        // 202
                                                                                                                    // 203
         var limit = Session.get(getSessionRowsPerPageKey(this.group));                                             // 204
         var currentPage = Session.get(getSessionCurrentPageKey(this.group));                                       // 205
@@ -753,4 +762,4 @@ Package['reactive-table'] = {};
 
 })();
 
-//# sourceMappingURL=1211c425e2835eb791a8da4b0e00bc879456c43b.map
+//# sourceMappingURL=c2e55d944faceb7631f9cef7410962d357dc3d80.map

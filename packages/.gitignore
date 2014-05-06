@@ -8,3 +8,6 @@ iron-router
 reactive-table
 just-i18n
 blaze-layout
+/fast-render
+/reactive-table
+/foundation

@@ -8,8 +8,8 @@ accounts-base
 accounts-password
 standard-app-packages
 spiderable-404
-foundation
 less
 fast-render
 iron-router
 reactive-table
+foundation

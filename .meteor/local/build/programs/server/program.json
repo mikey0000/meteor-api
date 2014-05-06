@@ -202,11 +202,6 @@
       "sourceMapRoot": "packages"
     },
     {
-      "path": "packages/foundation.js",
-      "sourceMap": "packages/foundation.js.map",
-      "sourceMapRoot": "packages"
-    },
-    {
       "path": "packages/less.js",
       "sourceMap": "packages/less.js.map",
       "sourceMapRoot": "packages"
@@ -236,6 +231,11 @@
     {
       "path": "packages/reactive-table.js",
       "sourceMap": "packages/reactive-table.js.map",
+      "sourceMapRoot": "packages"
+    },
+    {
+      "path": "packages/foundation.js",
+      "sourceMap": "packages/foundation.js.map",
       "sourceMapRoot": "packages"
     },
     {

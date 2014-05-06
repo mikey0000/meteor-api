@@ -1,9 +1,10 @@
 (function(){Template.dashboardShow.helpers({
     settings: function () {
+    	mappedFields = this.properties
         return {
             rowsPerPage: 10,
             showFilter: true,
-            fields: ['_id','type']
+            fields: mappedFields//['_id','type']
         };
     }
 });

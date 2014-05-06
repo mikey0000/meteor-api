@@ -1,4 +1,11 @@
 <template name="dashboardEdit">
-	
+	<form class="main">
+<input name="property" type="text" value="" placeholder="New property"/>
+<input name="collection_id" type="hidden" value="{{collection._id}}" />
+<input type="submit" value="Submit" class="btn btn-primary"/>
+</form>
+	{{#each collection.properties}}
+		{{this}}
+	{{/each}}
 
 </template>
