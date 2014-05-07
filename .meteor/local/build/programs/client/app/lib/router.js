@@ -65,6 +65,7 @@ DashboardCreateController = FastRender.RouteController.extend({
 
   data: function () {
     // return Posts.findOne({_id: this.params._id});
+    return {collectionList:Settings.find({type:"collection"})}
   },
 
   // action: function () {
@@ -86,7 +87,8 @@ DashboardEditController = FastRender.RouteController.extend({
   },
 
   data: function () {
-     return { collection:Settings.findOne({name: this.params.collection}) };
+     return { collectionList:Settings.find({type:"collection"}),
+     collection:Settings.findOne({name: this.params.collection}) };
   },
 
   // action: function () {
@@ -98,12 +100,16 @@ DashboardIndexController = FastRender.RouteController.extend({
   template: 'dashboardIndex',
 
   onBeforeAction: function () {
+    // if (Session.get('collectionAction') === undefined)
+      Session.set('collectionAction', 'dashboardShow');
   },
 
   onAfterAction: function () {
   },
 
   waitOn: function () {
+
+
     return [
       
     ]
@@ -111,6 +117,7 @@ DashboardIndexController = FastRender.RouteController.extend({
 
   data: function () {
     return { collectionList:Settings.find({type:"collection"}),
+    collection:Settings.findOne({})
     }
   },
 

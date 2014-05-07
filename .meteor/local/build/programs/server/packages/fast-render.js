@@ -324,169 +324,166 @@ Context = function Context(loginToken, otherParams) {                           
                                                                                                                     // 8
   _.extend(this, otherParams);                                                                                      // 9
                                                                                                                     // 10
-  // get the user                                                                                                   // 11
+  //get the user                                                                                                    // 11
   if(Meteor.users) {                                                                                                // 12
-    // check to make sure, we've the loginToken,                                                                    // 13
-    // otherwise a random user will fetched from the db                                                             // 14
-    if(loginToken) {                                                                                                // 15
-      if (typeof Accounts._hashLoginToken === 'function'){                                                          // 16
-        var hashedToken = loginToken && Accounts._hashLoginToken( loginToken );                                     // 17
-        var query = {'services.resume.loginTokens.hashedToken': hashedToken };                                      // 18
-      } else {                                                                                                      // 19
-        var query = {'services.resume.loginTokens.token': loginToken};                                              // 20
-      }                                                                                                             // 21
-      var options = {fields: {_id: 1}};                                                                             // 22
-      var user = Meteor.users.findOne(query, options);                                                              // 23
-    }                                                                                                               // 24
-                                                                                                                    // 25
-    //support for Meteor.user                                                                                       // 26
-    Fibers.current._meteor_dynamics = {};                                                                           // 27
-    Fibers.current._meteor_dynamics[DDP._CurrentInvocation.slot] = this;                                            // 28
-                                                                                                                    // 29
-    if(user) {                                                                                                      // 30
-      this.userId = user._id;                                                                                       // 31
-    }                                                                                                               // 32
-  }                                                                                                                 // 33
-};                                                                                                                  // 34
-                                                                                                                    // 35
-Context.prototype.find = function(collectionName, query, options) {                                                 // 36
-  var self = this;                                                                                                  // 37
-  if(collectionName.constructor == Meteor.Collection) {                                                             // 38
-    collectionName = collectionName._name;                                                                          // 39
-  } else if(typeof collectionName != 'string') {                                                                    // 40
-    throw new Error("find's first arg should be either a Meteor.Collection or a string");                           // 41
-  }                                                                                                                 // 42
-                                                                                                                    // 43
-  var mongo = MongoInternals.defaultRemoteCollectionDriver().mongo;                                                 // 44
-  if(mongo && mongo.db) {                                                                                           // 45
-    var future = new Future();                                                                                      // 46
-    var args = Array.prototype.slice.call(arguments, 1);                                                            // 47
-    var coll = mongo.db.collection(collectionName);                                                                 // 48
-                                                                                                                    // 49
-    coll.find.apply(coll, args).toArray(function(err, result) {                                                     // 50
-      if(err) {                                                                                                     // 51
-        throw err;                                                                                                  // 52
-      } else {                                                                                                      // 53
-        self._ensureCollection(collectionName);                                                                     // 54
-        self._collectionData[collectionName].push(result);                                                          // 55
-        future.return();                                                                                            // 56
-      }                                                                                                             // 57
-    });                                                                                                             // 58
-    future.wait();                                                                                                  // 59
-  } else {                                                                                                          // 60
-    console.warn('fast-render still cannot access the mongo connection');                                           // 61
-  }                                                                                                                 // 62
-};                                                                                                                  // 63
+    var hashedToken, query;                                                                                         // 13
+    if ( typeof Accounts._hashLoginToken === 'function' ){                                                          // 14
+      hashedToken = loginToken && Accounts._hashLoginToken( loginToken );                                           // 15
+      query = {'services.resume.loginTokens.hashedToken': hashedToken };                                            // 16
+    }                                                                                                               // 17
+    else                                                                                                            // 18
+      query = {'services.resume.loginTokens.token': loginToken};                                                    // 19
+    var options = {fields: {_id: 1}};                                                                               // 20
+    var user = Meteor.users.findOne(query, options);                                                                // 21
+                                                                                                                    // 22
+    //support for Meteor.user                                                                                       // 23
+    Fibers.current._meteor_dynamics = {};                                                                           // 24
+    Fibers.current._meteor_dynamics[DDP._CurrentInvocation.slot] = this;                                            // 25
+                                                                                                                    // 26
+    if(user) {                                                                                                      // 27
+      this.userId = user._id;                                                                                       // 28
+    }                                                                                                               // 29
+  }                                                                                                                 // 30
+};                                                                                                                  // 31
+                                                                                                                    // 32
+Context.prototype.find = function(collectionName, query, options) {                                                 // 33
+  var self = this;                                                                                                  // 34
+  if(collectionName.constructor == Meteor.Collection) {                                                             // 35
+    collectionName = collectionName._name;                                                                          // 36
+  } else if(typeof collectionName != 'string') {                                                                    // 37
+    throw new Error("find's first arg should be either a Meteor.Collection or a string");                           // 38
+  }                                                                                                                 // 39
+                                                                                                                    // 40
+  var mongo = MongoInternals.defaultRemoteCollectionDriver().mongo;                                                 // 41
+  if(mongo && mongo.db) {                                                                                           // 42
+    var future = new Future();                                                                                      // 43
+    var args = Array.prototype.slice.call(arguments, 1);                                                            // 44
+    var coll = mongo.db.collection(collectionName);                                                                 // 45
+                                                                                                                    // 46
+    coll.find.apply(coll, args).toArray(function(err, result) {                                                     // 47
+      if(err) {                                                                                                     // 48
+        throw err;                                                                                                  // 49
+      } else {                                                                                                      // 50
+        self._ensureCollection(collectionName);                                                                     // 51
+        self._collectionData[collectionName].push(result);                                                          // 52
+        future.return();                                                                                            // 53
+      }                                                                                                             // 54
+    });                                                                                                             // 55
+    future.wait();                                                                                                  // 56
+  } else {                                                                                                          // 57
+    console.warn('fast-render still cannot access the mongo connection');                                           // 58
+  }                                                                                                                 // 59
+};                                                                                                                  // 60
+                                                                                                                    // 61
+Context.prototype.subscribe = function(subscription /*, params */) {                                                // 62
+  var self = this;                                                                                                  // 63
                                                                                                                     // 64
-Context.prototype.subscribe = function(subscription /*, params */) {                                                // 65
-  var self = this;                                                                                                  // 66
-                                                                                                                    // 67
-  var publishHandler = Meteor.default_server.publish_handlers[subscription];                                        // 68
-  if(publishHandler) {                                                                                              // 69
-    var publishContext = new PublishContext(this, subscription);                                                    // 70
-    var params = Array.prototype.slice.call(arguments, 1);                                                          // 71
-                                                                                                                    // 72
-    this.processPublication(publishHandler, publishContext, params);                                                // 73
-  } else {                                                                                                          // 74
-    console.warn('There is no such publish handler named:', subscription);                                          // 75
-  }                                                                                                                 // 76
-};                                                                                                                  // 77
+  var publishHandler = Meteor.default_server.publish_handlers[subscription];                                        // 65
+  if(publishHandler) {                                                                                              // 66
+    var publishContext = new PublishContext(this, subscription);                                                    // 67
+    var params = Array.prototype.slice.call(arguments, 1);                                                          // 68
+                                                                                                                    // 69
+    this.processPublication(publishHandler, publishContext, params);                                                // 70
+  } else {                                                                                                          // 71
+    console.warn('There is no such publish handler named:', subscription);                                          // 72
+  }                                                                                                                 // 73
+};                                                                                                                  // 74
+                                                                                                                    // 75
+Context.prototype.processPublication = function(publishHandler, publishContext, params) {                           // 76
+  var self = this;                                                                                                  // 77
                                                                                                                     // 78
-Context.prototype.processPublication = function(publishHandler, publishContext, params) {                           // 79
-  var self = this;                                                                                                  // 80
-                                                                                                                    // 81
-  var future = new Future;                                                                                          // 82
-  this._subscriptionFutures.push(future);                                                                           // 83
-  //detect when the context is ready to be sent to the client                                                       // 84
-  publishContext.onStop(function() {                                                                                // 85
-    if(!future.isResolved()) {                                                                                      // 86
-      future.return();                                                                                              // 87
-    }                                                                                                               // 88
-  });                                                                                                               // 89
-                                                                                                                    // 90
-  var cursors;                                                                                                      // 91
-                                                                                                                    // 92
-  try {                                                                                                             // 93
-    cursors = publishHandler.apply(publishContext, params);                                                         // 94
-  } catch(ex) {                                                                                                     // 95
-    console.warn('error caught on publication: ', publishContext._subscription, ': ', ex.message);                  // 96
-    // since, this subscription caught on an error we can't proceed.                                                // 97
-    // but we can't also throws an error since other publications might have something useful                       // 98
-    // So, it's not fair to ignore running them due to error of this sub                                            // 99
-    // this might also be failed due to the use of some private API's of Meteor's Susbscription class               // 100
-    publishContext.ready();                                                                                         // 101
-  }                                                                                                                 // 102
-                                                                                                                    // 103
-  if(cursors) {                                                                                                     // 104
-    //the publish function returned a cursor                                                                        // 105
-    if(cursors.constructor != Array) {                                                                              // 106
-      cursors = [cursors];                                                                                          // 107
-    }                                                                                                               // 108
-                                                                                                                    // 109
-    //add collection data                                                                                           // 110
-    cursors.forEach(function(cursor) {                                                                              // 111
-      cursor.rewind();                                                                                              // 112
-      var collectionName =                                                                                          // 113
-        (cursor._cursorDescription)? cursor._cursorDescription.collectionName: null || //for meteor-collections     // 114
-        (cursor._collection)? cursor._collection._name: null; //for smart-collections                               // 115
-                                                                                                                    // 116
-      self._ensureCollection(collectionName);                                                                       // 117
-      self._collectionData[collectionName].push(cursor.fetch());                                                    // 118
-    });                                                                                                             // 119
-                                                                                                                    // 120
-    //the subscription is ready                                                                                     // 121
-    publishContext.ready();                                                                                         // 122
-  } else if(cursors === null) {                                                                                     // 123
-    //some developers send null to indicate they are not using the publication                                      // 124
-    //this is not the way to go, but meteor's accounts-base also does this                                          // 125
-    //so we need some special handling on this                                                                      // 126
-    publishContext.ready();                                                                                         // 127
-  }                                                                                                                 // 128
-                                                                                                                    // 129
-  if (!future.isResolved()) {                                                                                       // 130
-    //don't wait forever for handler to fire ready()                                                                // 131
-    Meteor.setTimeout(function() {                                                                                  // 132
-      if (!future.isResolved()) {                                                                                   // 133
-        //publish handler failed to send ready signal in time                                                       // 134
-        console.warn('Publish handler for', publishContext._subscription, 'sent no ready signal');                  // 135
-        future.return();                                                                                            // 136
-      }                                                                                                             // 137
-    }, 500);  //arbitrarially set timeout to 500ms, should probably be configurable                                 // 138
-  }                                                                                                                 // 139
-};                                                                                                                  // 140
-                                                                                                                    // 141
-Context.prototype.completeSubscriptions = function(subscriptions) {                                                 // 142
-  var self = this;                                                                                                  // 143
-  if(typeof subscriptions == 'string') {                                                                            // 144
-    subscriptions = [subscriptions];                                                                                // 145
-  } else if(!subscriptions || subscriptions.constructor != Array) {                                                 // 146
-    throw new Error('subscriptions params should be either a string or array of strings');                          // 147
-  }                                                                                                                 // 148
-                                                                                                                    // 149
-  subscriptions.forEach(function(subscription) {                                                                    // 150
-    self._subscriptions[subscription] = true;                                                                       // 151
-  });                                                                                                               // 152
-};                                                                                                                  // 153
-                                                                                                                    // 154
-Context.prototype._ensureCollection = function(collectionName) {                                                    // 155
-  if(!this._collectionData[collectionName]) {                                                                       // 156
-    this._collectionData[collectionName] = [];                                                                      // 157
-  }                                                                                                                 // 158
-};                                                                                                                  // 159
-                                                                                                                    // 160
-Context.prototype.getData = function() {                                                                            // 161
-  // Ensure that all of the subscriptions are ready                                                                 // 162
-  this._subscriptionFutures.forEach(function(future) {                                                              // 163
-    future.wait();                                                                                                  // 164
-  });                                                                                                               // 165
-                                                                                                                    // 166
-  return {                                                                                                          // 167
-    collectionData: this._collectionData,                                                                           // 168
-    subscriptions: this._subscriptions                                                                              // 169
-  };                                                                                                                // 170
-};                                                                                                                  // 171
-                                                                                                                    // 172
-FastRender._Context = Context;                                                                                      // 173
+  var future = new Future;                                                                                          // 79
+  this._subscriptionFutures.push(future);                                                                           // 80
+  //detect when the context is ready to be sent to the client                                                       // 81
+  publishContext.onStop(function() {                                                                                // 82
+    if(!future.isResolved()) {                                                                                      // 83
+      future.return();                                                                                              // 84
+    }                                                                                                               // 85
+  });                                                                                                               // 86
+                                                                                                                    // 87
+  var cursors;                                                                                                      // 88
+                                                                                                                    // 89
+  try {                                                                                                             // 90
+    cursors = publishHandler.apply(publishContext, params);                                                         // 91
+  } catch(ex) {                                                                                                     // 92
+    console.warn('error caught on publication: ', publishContext._subscription, ': ', ex.message);                  // 93
+    // since, this subscription caught on an error we can't proceed.                                                // 94
+    // but we can't also throws an error since other publications might have something useful                       // 95
+    // So, it's not fair to ignore running them due to error of this sub                                            // 96
+    // this might also be failed due to the use of some private API's of Meteor's Susbscription class               // 97
+    publishContext.ready();                                                                                         // 98
+  }                                                                                                                 // 99
+                                                                                                                    // 100
+  if(cursors) {                                                                                                     // 101
+    //the publish function returned a cursor                                                                        // 102
+    if(cursors.constructor != Array) {                                                                              // 103
+      cursors = [cursors];                                                                                          // 104
+    }                                                                                                               // 105
+                                                                                                                    // 106
+    //add collection data                                                                                           // 107
+    cursors.forEach(function(cursor) {                                                                              // 108
+      cursor.rewind();                                                                                              // 109
+      var collectionName =                                                                                          // 110
+        (cursor._cursorDescription)? cursor._cursorDescription.collectionName: null || //for meteor-collections     // 111
+        (cursor._collection)? cursor._collection._name: null; //for smart-collections                               // 112
+                                                                                                                    // 113
+      self._ensureCollection(collectionName);                                                                       // 114
+      self._collectionData[collectionName].push(cursor.fetch());                                                    // 115
+    });                                                                                                             // 116
+                                                                                                                    // 117
+    //the subscription is ready                                                                                     // 118
+    publishContext.ready();                                                                                         // 119
+  } else if(cursors === null) {                                                                                     // 120
+    //some developers send null to indicate they are not using the publication                                      // 121
+    //this is not the way to go, but meteor's accounts-base also does this                                          // 122
+    //so we need some special handling on this                                                                      // 123
+    publishContext.ready();                                                                                         // 124
+  }                                                                                                                 // 125
+                                                                                                                    // 126
+  if (!future.isResolved()) {                                                                                       // 127
+    //don't wait forever for handler to fire ready()                                                                // 128
+    Meteor.setTimeout(function() {                                                                                  // 129
+      if (!future.isResolved()) {                                                                                   // 130
+        //publish handler failed to send ready signal in time                                                       // 131
+        console.warn('Publish handler for', publishContext._subscription, 'sent no ready signal');                  // 132
+        future.return();                                                                                            // 133
+      }                                                                                                             // 134
+    }, 500);  //arbitrarially set timeout to 500ms, should probably be configurable                                 // 135
+  }                                                                                                                 // 136
+};                                                                                                                  // 137
+                                                                                                                    // 138
+Context.prototype.completeSubscriptions = function(subscriptions) {                                                 // 139
+  var self = this;                                                                                                  // 140
+  if(typeof subscriptions == 'string') {                                                                            // 141
+    subscriptions = [subscriptions];                                                                                // 142
+  } else if(!subscriptions || subscriptions.constructor != Array) {                                                 // 143
+    throw new Error('subscriptions params should be either a string or array of strings');                          // 144
+  }                                                                                                                 // 145
+                                                                                                                    // 146
+  subscriptions.forEach(function(subscription) {                                                                    // 147
+    self._subscriptions[subscription] = true;                                                                       // 148
+  });                                                                                                               // 149
+};                                                                                                                  // 150
+                                                                                                                    // 151
+Context.prototype._ensureCollection = function(collectionName) {                                                    // 152
+  if(!this._collectionData[collectionName]) {                                                                       // 153
+    this._collectionData[collectionName] = [];                                                                      // 154
+  }                                                                                                                 // 155
+};                                                                                                                  // 156
+                                                                                                                    // 157
+Context.prototype.getData = function() {                                                                            // 158
+  // Ensure that all of the subscriptions are ready                                                                 // 159
+  this._subscriptionFutures.forEach(function(future) {                                                              // 160
+    future.wait();                                                                                                  // 161
+  });                                                                                                               // 162
+                                                                                                                    // 163
+  return {                                                                                                          // 164
+    collectionData: this._collectionData,                                                                           // 165
+    subscriptions: this._subscriptions                                                                              // 166
+  };                                                                                                                // 167
+};                                                                                                                  // 168
+                                                                                                                    // 169
+FastRender._Context = Context;                                                                                      // 170
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }).call(this);

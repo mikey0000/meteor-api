@@ -1,0 +1,11 @@
+<template name="collectionSideNav">
+<ul>
+{{#each collectionList}}
+<li><a href="/dashboard/{{name}}">{{name}}</a>
+	<ul>
+		<li><a href="/{{name}}/properties">properties</a></li>
+		<li><a href="/{{name}}/api">api</a></li>
+	</ul>
+</li>{{/each}}
+</ul>
+</template>
