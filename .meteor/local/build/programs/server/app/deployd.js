@@ -4,9 +4,17 @@ collections = {};
 
 
 if (Meteor.isClient) {
-  Meteor.startup(function() {
+  Meteor.subscribe("apiList");
 
-    Meteor.subscribe("apiList");
+  var settings = Settings.find().fetch()
+    _.each(settings, function(collection) {
+      console.log(collection);
+      Meteor.subscribe('api',collection.name)
+    })
+
+  Meteor.startup(function() {
+    // Accounts.createUser({email: "blah", password:"blah"}, function(){});
+
   });
 
 

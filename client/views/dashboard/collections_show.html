@@ -75,6 +75,13 @@
       </div>
       <div id="main-container">
         {{> reactiveTable collection=data settings=settings}}
+
+
+        <form class="main">
+<input name="property" type="text" value="" placeholder="property"/>
+<input name="value" type="text" value="" placeholder="New value" />
+<input type="submit" value="Submit" class="btn btn-primary"/>
+</form>
       </div>
     </div>
 </template>

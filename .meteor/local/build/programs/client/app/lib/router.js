@@ -41,7 +41,9 @@ DashboardShowController = FastRender.RouteController.extend({
     var collectionName = this.params.collection;
     // collections["settings"] = Settings;
     var collection = collections[collectionName].find()
-    return { data:collection, properties:Settings.findOne({name: collectionName}).properties };
+    return { data:collection, 
+      properties:Settings.findOne({name: collectionName}).properties,
+      collectionName: collectionName };
   },
     fastRender: true
 
@@ -128,6 +130,11 @@ DashboardIndexController = FastRender.RouteController.extend({
 
 
 Router.map(function() {
+
+this.route('home', {
+  path: '/',
+    
+  });
 
 this.route('dashboardIndex', {
   path: '/dashboard',

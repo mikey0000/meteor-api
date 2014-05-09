@@ -14,7 +14,7 @@ Template.__define__("dashboardShow", (function() {
   }, UI.block(function() {
     var self = this;
     return Spacebars.include(self.lookupTemplate("reactiveTable"));
-  })), "\n      "), "\n    ") ];
+  })), HTML.Raw('\n\n\n        <form class="main">\n<input name="property" type="text" value="" placeholder="property">\n<input name="value" type="text" value="" placeholder="New value">\n<input type="submit" value="Submit" class="btn btn-primary">\n</form>\n      ')), "\n    ") ];
 }));
 
 })();
